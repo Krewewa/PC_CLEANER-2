@@ -1,0 +1,51 @@
+﻿<Application x:Class="P1_PCleaner.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:view="clr-namespace:P1_PCleaner.View"
+             xmlns:viewModel="clr-namespace:P1_PCleaner.ViewModel"
+             xmlns:control="clr-namespace:P1_PCleaner.Control"
+             xmlns:converter="clr-namespace:P1_PCleaner.Converter"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/NavigationTheme.xaml" />
+                <ResourceDictionary Source="Style/CommonTheme.xaml" />
+                <ResourceDictionary Source="Style/JunkFilesTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type viewModel:NavbarViewModel}">
+                <view:Navbar />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ScanViewModel}">
+                <view:ScanView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RecycleBinViewModel}">
+                <view:RecycleBinView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:JunkFilesViewModel}">
+                <view:JunkFilesView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:NotFoundViewModel}">
+                <view:NotFoundView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:WindowsSystemCategoryViewModel}">
+                <view:WindowsSystemCategoryView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:BrowserCacheCategoryViewModel}">
+                <view:BrowserCacheCategoryView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DownloadsCategoryViewModel}">
+                <view:DownloadsCategoryView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:LoadingViewModel}">
+                <view:LoadingView />
+            </DataTemplate>
+            <Style TargetType="control:NavRadioButton" BasedOn="{StaticResource {x:Type RadioButton}}" />
+            <Style TargetType="control:CategoryRadioButton" BasedOn="{StaticResource {x:Type RadioButton}}" />
+            <Style TargetType="control:CategoryCheckBox" BasedOn="{StaticResource {x:Type CheckBox}}" />
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <converter:InverseBooleanVisibilityConverter x:Key="InverseBooleanVisibilityConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
